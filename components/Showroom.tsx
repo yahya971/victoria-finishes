@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, MapPin } from 'lucide-react';
 import { LiquidGlass } from '@liquidglass/react';
+import { getAssetPath } from '../utils/paths';
 
 const Showroom: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Showroom: React.FC = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
         style={{
-          backgroundImage: 'url("/assets/showroom-form.jpg")',
+          backgroundImage: `url("${getAssetPath('/assets/showroom-form.jpg')}")`,
         }}
       >
         <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>

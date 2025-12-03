@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LiquidGlass } from '@liquidglass/react';
+import { getAssetPath } from '../utils/paths';
 
 const About: React.FC = () => {
   return (
@@ -60,7 +61,7 @@ const About: React.FC = () => {
           >
             <div className="relative overflow-hidden shadow-2xl rounded-lg">
               <img
-                src="/assets/about-001.jpg"
+                src={getAssetPath('/assets/about-001.jpg')}
                 alt="Craftsman working"
                 className="w-full h-[500px] lg:h-[550px] object-cover object-center"
               />

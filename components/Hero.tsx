@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { getAssetPath } from '../utils/paths';
 
 const Hero: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Hero: React.FC = () => {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: 'url("/assets/hero-001.jpg")',
+          backgroundImage: `url("${getAssetPath('/assets/hero-001.jpg')}")`,
         }}
       >
         <div className="absolute inset-0 bg-black/30"></div>

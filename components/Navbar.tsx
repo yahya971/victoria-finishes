@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { NAV_ITEMS } from '../constants';
+import { getAssetPath } from '../utils/paths';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src="/assets/logo.png" alt="Victoria Finishes Logo" className="h-12 w-auto" />
+          <img src={getAssetPath('/assets/logo.png')} alt="Victoria Finishes Logo" className="h-12 w-auto" />
           <div className="flex flex-col">
             <a href="#" className={`font-serif text-2xl tracking-widest font-bold ${scrolled ? 'text-charcoal' : 'text-charcoal lg:text-white'}`}>
               VICTORIA FINISHES
