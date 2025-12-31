@@ -16,7 +16,7 @@ const Gallery: React.FC = () => {
     : GALLERY_ITEMS.filter(item => item.category === filter);
 
   return (
-    <section id="gallery" className="py-20 bg-white">
+    <section id="gallery" className="pt-32 pb-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h4 className="text-gold text-sm font-bold tracking-[0.25em] uppercase mb-5">

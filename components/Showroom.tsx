@@ -6,7 +6,7 @@ import { getAssetPath } from '../utils/paths';
 
 const Showroom: React.FC = () => {
   return (
-    <section id="showroom" className="relative py-24 md:py-32 flex items-center justify-center overflow-hidden">
+    <section id="showroom" className="relative pt-32 md:pt-40 pb-24 md:pb-32 flex items-center justify-center overflow-hidden">
       {/* Parallax-style Background */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed z-0"

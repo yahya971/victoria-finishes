@@ -2,9 +2,21 @@ import { Product, GalleryItem, NavItem } from './types';
 import { getAssetPath } from './utils/paths';
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '#about' },
-  { label: 'Products', href: '#products' },
+  {
+    label: 'Products',
+    dropdown: [
+      { label: 'Italian Decorative Paint', href: '/products/italian-decorative-paint', enabled: true },
+      { label: 'Premium Vinyl Wrap', href: '#', enabled: false },
+      { label: 'Italian Wallpaper', href: '#', enabled: false },
+      { label: 'Modern Wall Panel', href: '#', enabled: false },
+      { label: 'Waterproof Panel', href: '#', enabled: false },
+      { label: 'Soundproof Panel', href: '#', enabled: false },
+      { label: 'Composite Decking', href: '#', enabled: false },
+      { label: 'Composite Siding', href: '#', enabled: false },
+    ]
+  },
   { label: 'Showroom', href: '#showroom' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },

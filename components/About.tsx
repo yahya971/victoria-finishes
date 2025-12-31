@@ -5,7 +5,7 @@ import { getAssetPath } from '../utils/paths';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 md:py-32 bg-white">
+    <section id="about" className="pt-32 md:pt-40 pb-20 md:pb-32 bg-white">
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           

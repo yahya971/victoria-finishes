@@ -25,5 +25,12 @@ export interface GalleryItem {
 
 export interface NavItem {
   label: string;
+  href?: string;  // Optional for items with dropdowns
+  dropdown?: NavDropdownItem[];  // Optional dropdown items
+}
+
+export interface NavDropdownItem {
+  label: string;
   href: string;
+  enabled: boolean;  // To disable/enable menu items
 }

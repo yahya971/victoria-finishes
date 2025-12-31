@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { getAssetPath } from '../utils/paths';
 
 const Contact: React.FC = () => {
   return (
@@ -68,12 +69,18 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 uppercase tracking-widest">
-          <p>&copy; 2025 Victoria Finishes. All rights reserved.</p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-gold">Privacy Policy</a>
-            <a href="#" className="hover:text-gold">Terms of Service</a>
+        {/* Copyright and Canadian Badge */}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-gray-300 font-medium tracking-wide">&copy; 2025 Victoria Finishes. All rights reserved.</p>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-300 font-medium tracking-wide">
+              100% Canadian Owned and Operated
+            </span>
+            <img
+              src={getAssetPath('/assets/canadian-badge.png')}
+              alt="Proudly Canadian"
+              className="h-12 w-auto object-contain"
+            />
           </div>
         </div>
       </div>

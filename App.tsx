@@ -1,23 +1,18 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Products from './components/Products';
-import Showroom from './components/Showroom';
-import Gallery from './components/Gallery';
 import Contact from './components/Contact';
+import HomePage from './pages/HomePage';
+import ItalianDecorativePaint from './pages/ItalianDecorativePaint';
 
 function App() {
   return (
     <div className="font-sans text-charcoal bg-white antialiased selection:bg-gold selection:text-white">
       <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Products />
-        <Showroom />
-        <Gallery />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products/italian-decorative-paint" element={<ItalianDecorativePaint />} />
+      </Routes>
       <Contact />
     </div>
   );

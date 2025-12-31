@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Red maple leaf background -->
+  <path fill="#FF0000" d="M100 10 l5 25 16-16 -6 22 20-8 -12 18 22-2 -14 14 22 4 -18 8 18 12 -22-2 12 18 -20-8 6 22 -16-16 -5 25 -5-25 -16 16 6-22 -20 8 12-18 -22 2 14-14 -22-4 18-8 -18-12 22 2 -12-18 20 8 -6-22 16 16z"/>
+
+  <!-- Text -->
+  <text x="100" y="60" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">PROUDLY</text>
+  <text x="100" y="95" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="42" font-weight="bold">100%</text>
+  <text x="100" y="130" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">CANADIAN</text>
+  <text x="100" y="160" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="14" font-weight="bold">OWNED & OPERATED</text>
+</svg>

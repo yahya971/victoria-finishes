@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2 } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Product } from '../types';
 
 interface ProductModalProps {
@@ -9,7 +10,28 @@ interface ProductModalProps {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   if (!product) return null;
+
+  const handleSeeMoreDetails = () => {
+    onClose();
+    navigate('/products/italian-decorative-paint');
+  };
+
+  const handleBookConsultation = () => {
+    onClose();
+    // Navigate to home with showroom hash if not already there
+    if (location.pathname !== '/') {
+      navigate('/#showroom');
+    } else {
+      const element = document.getElementById('showroom');
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -89,14 +111,26 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-gray-100">
-               <a
-                href="#showroom"
-                onClick={onClose}
-                className="inline-block w-full text-center bg-charcoal text-white py-4 font-semibold uppercase tracking-wider text-sm hover:bg-gold transition-colors rounded-lg shadow-md"
+            {/* Two Buttons Side-by-Side */}
+            <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={handleSeeMoreDetails}
+                disabled={product.id !== 'p1'}
+                className={`flex-1 text-center py-4 font-semibold uppercase tracking-wider text-sm transition-colors rounded-lg shadow-md ${
+                  product.id === 'p1'
+                    ? 'bg-gold text-white hover:bg-gold/90 cursor-pointer'
+                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                }`}
               >
-                Book Consultation for this Product
-              </a>
+                See More Details
+              </button>
+
+              <button
+                onClick={handleBookConsultation}
+                className="flex-1 text-center bg-charcoal text-white py-4 font-semibold uppercase tracking-wider text-sm hover:bg-gold transition-colors rounded-lg shadow-md"
+              >
+                Book Consultation
+              </button>
             </div>
           </div>
         </motion.div>

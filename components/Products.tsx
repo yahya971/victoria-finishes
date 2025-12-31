@@ -10,7 +10,7 @@ const Products: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   return (
-    <section id="products" className="py-20 bg-off-white">
+    <section id="products" className="pt-32 pb-20 bg-off-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h4 className="text-gold text-sm font-bold tracking-[0.25em] uppercase mb-5">
