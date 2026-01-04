@@ -1,22 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LiquidGlass } from '@liquidglass/react';
-import { ItalianPaintSubProduct } from '../data/italianPaintProducts';
-import { SUB_PRODUCT_IMAGES } from '../utils/italianPaintImages';
-import { getAssetPath } from '../utils/paths';
 
-interface SubProductCardProps {
-  subProduct: ItalianPaintSubProduct;
-  index: number;
-  onClick: () => void;
+interface SubProduct {
+  id: string;
+  name: string;
+  tagline: string;
+  folderName: string;
 }
 
-const SubProductCard: React.FC<SubProductCardProps> = ({ subProduct, index, onClick }) => {
-  // Get the first image from the product folder
-  const firstImage = SUB_PRODUCT_IMAGES[subProduct.folderName]?.[0];
-  const imagePath = firstImage
-    ? getAssetPath(`/assets/italian-decorative-paint/${subProduct.folderName}/${firstImage}`)
-    : getAssetPath('/assets/showroom-001.jpg');
+interface SubProductCardProps {
+  subProduct: SubProduct;
+  index: number;
+  onClick: () => void;
+  firstImage: string;
+}
+
+const SubProductCard: React.FC<SubProductCardProps> = ({ subProduct, index, onClick, firstImage }) => {
+  const imagePath = firstImage;
 
   return (
     <motion.div

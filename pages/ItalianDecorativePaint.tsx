@@ -5,7 +5,8 @@ import { ITALIAN_PAINT_SUBPRODUCTS } from '../data/italianPaintProducts';
 import SubProductCard from '../components/SubProductCard';
 import SubProductModal from '../components/SubProductModal';
 import ItalianPaintGallery from '../components/ItalianPaintGallery';
-import { getSubProductImages } from '../utils/italianPaintImages';
+import { getSubProductImages, SUB_PRODUCT_IMAGES } from '../utils/italianPaintImages';
+import { getAssetPath } from '../utils/paths';
 import type { ItalianPaintSubProduct } from '../data/italianPaintProducts';
 
 const ItalianDecorativePaint: React.FC = () => {
@@ -44,14 +45,22 @@ const ItalianDecorativePaint: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ITALIAN_PAINT_SUBPRODUCTS.map((subProduct, index) => (
-              <SubProductCard
-                key={subProduct.id}
-                subProduct={subProduct}
-                index={index}
-                onClick={() => handleSubProductClick(subProduct)}
-              />
-            ))}
+            {ITALIAN_PAINT_SUBPRODUCTS.map((subProduct, index) => {
+              const firstImage = SUB_PRODUCT_IMAGES[subProduct.folderName]?.[0];
+              const imagePath = firstImage
+                ? getAssetPath(`/assets/italian-decorative-paint/${subProduct.folderName}/${firstImage}`)
+                : getAssetPath('/assets/showroom-001.jpg');
+
+              return (
+                <SubProductCard
+                  key={subProduct.id}
+                  subProduct={subProduct}
+                  index={index}
+                  onClick={() => handleSubProductClick(subProduct)}
+                  firstImage={imagePath}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
@@ -64,6 +73,7 @@ const ItalianDecorativePaint: React.FC = () => {
         subProduct={selectedSubProduct}
         images={modalImages}
         onClose={handleCloseModal}
+        productCategoryName="Italian Decorative Paint"
       />
 
       {/* CTA Section */}

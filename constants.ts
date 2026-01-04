@@ -8,7 +8,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'Products',
     dropdown: [
       { label: 'Italian Decorative Paint', href: '/products/italian-decorative-paint', enabled: true },
-      { label: 'Premium Vinyl Wrap', href: '#', enabled: false },
+      { label: 'Premium Vinyl Wrap', href: '/products/vinyl-wrap', enabled: true },
       { label: 'Italian Wallpaper', href: '#', enabled: false },
       { label: 'Modern Wall Panel', href: '#', enabled: false },
       { label: 'Waterproof Panel', href: '#', enabled: false },

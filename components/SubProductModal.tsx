@@ -2,15 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ItalianPaintSubProduct } from '../data/italianPaintProducts';
 
-interface SubProductModalProps {
-  subProduct: ItalianPaintSubProduct | null;
-  images: string[];
-  onClose: () => void;
+interface SubProduct {
+  id: string;
+  name: string;
+  tagline: string;
+  subtitle?: string;
+  description: string[];
+  features: string[];
+  externalLink: string;
+  folderName: string;
 }
 
-const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, onClose }) => {
+interface SubProductModalProps {
+  subProduct: SubProduct | null;
+  images: string[];
+  onClose: () => void;
+  productCategoryName: string;
+}
+
+const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, onClose, productCategoryName }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const navigate = useNavigate();
@@ -142,7 +153,7 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
           {/* Content Section */}
           <div className="w-full lg:w-3/5 p-8 md:p-12 bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none flex flex-col">
             <h4 className="text-gold text-sm font-bold uppercase tracking-widest mb-3">
-              Italian Decorative Paint
+              {productCategoryName}
             </h4>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-charcoal mb-3">
               {subProduct.name}

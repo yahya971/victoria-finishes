@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Contact from './components/Contact';
 import HomePage from './pages/HomePage';
 import ItalianDecorativePaint from './pages/ItalianDecorativePaint';
+import VinylWrap from './pages/VinylWrap';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/products/italian-decorative-paint" element={<ItalianDecorativePaint />} />
+        <Route path="/products/vinyl-wrap" element={<VinylWrap />} />
       </Routes>
       <Contact />
     </div>
