@@ -185,15 +185,17 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
             </div>
 
             {/* External Link */}
-            <a
-              href={subProduct.externalLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-gold hover:text-charcoal transition-colors text-sm mb-6"
-            >
-              <ExternalLink size={16} />
-              <span>View manufacturer's details & catalogue</span>
-            </a>
+            {subProduct.externalLink && (
+              <a
+                href={subProduct.externalLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gold hover:text-charcoal transition-colors text-sm mb-6"
+              >
+                <ExternalLink size={16} />
+                <span>View manufacturer's details & catalogue</span>
+              </a>
+            )}
 
             {/* Action Button */}
             <div className="pt-6 border-t border-gray-100">

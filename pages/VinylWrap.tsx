@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle2, Shield } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { VINYL_WRAP_SUBPRODUCTS, VINYL_WRAP_BENEFITS, VINYL_WRAP_APPLICATIONS, VINYL_WRAP_SURFACES } from '../data/vinylWrapProducts';
 import SubProductCard from '../components/SubProductCard';
 import SubProductModal from '../components/SubProductModal';
 import ProductGallery from '../components/ProductGallery';
+import BenefitIcon from '../components/BenefitIcon';
 import { getVinylWrapImages, VINYL_WRAP_IMAGES, VINYL_WRAP_GALLERY_IMAGES } from '../utils/vinylWrapImages';
 import { getAssetPath } from '../utils/paths';
 import type { VinylWrapSubProduct } from '../data/vinylWrapProducts';
@@ -14,6 +15,8 @@ const VinylWrap: React.FC = () => {
   const navigate = useNavigate();
   const [selectedSubProduct, setSelectedSubProduct] = useState<VinylWrapSubProduct | null>(null);
   const [modalImages, setModalImages] = useState<string[]>([]);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [rotationDelay, setRotationDelay] = useState(8000);
 
   const handleSubProductClick = (subProduct: VinylWrapSubProduct) => {
     setSelectedSubProduct(subProduct);
@@ -24,6 +27,20 @@ const VinylWrap: React.FC = () => {
     setSelectedSubProduct(null);
     setModalImages([]);
   };
+
+  const handleManualSectionChange = (index: number) => {
+    setCurrentSection(index);
+    setRotationDelay(20000); // Set to 20 seconds for manual selection
+  };
+
+  // Auto-rotate sections with dynamic delay
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSection((prev) => (prev + 1) % 3);
+      setRotationDelay(8000); // Reset to 8 seconds after first rotation
+    }, rotationDelay);
+    return () => clearInterval(interval);
+  }, [rotationDelay]);
 
   // Prepare gallery images
   const galleryImages = [
@@ -80,7 +97,7 @@ const VinylWrap: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-2xl md:text-2xl lg:text-4xl font-serif font-bold text-charcoal mb-4 leading-tight"
             >
-              FOR WALLS, FURNITURE & MORE
+              FOR WALLS, FURNITURE, ELEVATORS & MORE!
             </motion.h3>
 
             <motion.p
@@ -90,7 +107,7 @@ const VinylWrap: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-gray-600 text-base md:text-lg max-w-3xl mx-auto"
             >
-              Architectural vinyl film used to renovate and enhance the appearance of various surfaces within commercial and residential properties.
+              Architectural vinyl film used to renovate and enhance the appearance of various surfaces within commercial and residential properties. The film comes in a wide range of patterns, colors, and textures, allowing creation of unique and visually appealing spaces.
             </motion.p>
           </div>
 
@@ -136,7 +153,7 @@ const VinylWrap: React.FC = () => {
             className="max-w-5xl mx-auto text-center"
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 leading-tight">
-              About Bodaq Interior Film
+              About Our Vinyl Wrap
             </h2>
             <div className="space-y-6 text-lg md:text-xl text-white/95 leading-relaxed">
               <motion.p
@@ -146,7 +163,7 @@ const VinylWrap: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="drop-shadow-lg"
               >
-                Bodaq Interior Film is a self-adhesive, stretchable architectural finish that allows you
+                Our vinyl wrap is a self-adhesive, stretchable architectural finish that allows you
                 to refinish interior surfaces without replacing them. Trusted by interior
                 designers, installers, and fabricators, it's applied directly to doors, walls, cabinets,
                 furniture, and even ceilings.
@@ -166,87 +183,8 @@ const VinylWrap: React.FC = () => {
         </div>
       </section>
 
-      {/* Applications & Surfaces Section - Modern Split Design */}
-      <section className="py-20 bg-off-white relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              {/* Applications */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <div>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-charcoal mb-6">
-                    Where Can Bodaq<br />Film Be Used?
-                  </h3>
-                  <div className="w-20 h-1 bg-gold mb-8"></div>
-
-                  <div className="space-y-3">
-                    {VINYL_WRAP_APPLICATIONS.map((app, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.08, duration: 0.5 }}
-                        whileHover={{ x: 8, transition: { duration: 0.2 } }}
-                        className="group flex items-start gap-4 p-4 rounded-xl hover:bg-white/80 transition-all duration-300"
-                      >
-                        <div className="flex-shrink-0 w-8 h-8 bg-gold/10 rounded-lg flex items-center justify-center group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                          <CheckCircle2 size={18} className="text-gold group-hover:text-white transition-colors duration-300" />
-                        </div>
-                        <span className="text-gray-700 text-lg group-hover:text-charcoal transition-colors duration-300">{app}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Surfaces */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <div>
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-charcoal mb-6">
-                    What Surfaces<br />Can It Wrap?
-                  </h3>
-                  <div className="w-20 h-1 bg-gold mb-8"></div>
-
-                  <div className="space-y-3">
-                    {VINYL_WRAP_SURFACES.map((surface, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.08, duration: 0.5 }}
-                        whileHover={{ x: 8, transition: { duration: 0.2 } }}
-                        className="group flex items-start gap-4 p-4 rounded-xl hover:bg-white/80 transition-all duration-300"
-                      >
-                        <div className="flex-shrink-0 w-8 h-8 bg-gold/10 rounded-lg flex items-center justify-center group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-                          <CheckCircle2 size={18} className="text-gold group-hover:text-white transition-colors duration-300" />
-                        </div>
-                        <span className="text-gray-700 text-lg group-hover:text-charcoal transition-colors duration-300">{surface}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-
-      {/* Benefits Section - Modern Card Grid */}
-      <section className="py-20 bg-white relative">
+      {/* Merged Benefits, Applications & Surfaces Section - Auto-Rotating */}
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -258,62 +196,179 @@ const VinylWrap: React.FC = () => {
             <h3 className="text-gold text-sm font-bold tracking-[0.3em] uppercase mb-3">
               Premium Quality
             </h3>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-charcoal mb-4">
-              Why Choose Bodaq Interior Film?
-            </h2>
+            <AnimatePresence mode="wait">
+              <motion.h2
+                key={currentSection}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-charcoal mb-4"
+              >
+                {currentSection === 0 && "Why Should I Choose Bodaq Interior Film?"}
+                {currentSection === 1 && "Where Can Vinyl Film Be Used?"}
+                {currentSection === 2 && "What Surfaces Can It Wrap?"}
+              </motion.h2>
+            </AnimatePresence>
           </motion.div>
 
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-            {VINYL_WRAP_BENEFITS.map((benefit, index) => (
-              <motion.div
+          {/* Section Indicators */}
+          <div className="flex justify-center gap-3 mb-8">
+            {[0, 1, 2].map((index) => (
+              <button
                 key={index}
-                initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94]
-                }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className={`group relative bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 ${
-                  index === VINYL_WRAP_BENEFITS.length - 1 ? 'lg:col-start-2' : ''
+                onClick={() => handleManualSectionChange(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentSection === index ? 'w-12 bg-gold' : 'w-2 bg-gray-300'
                 }`}
-              >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-yellow-600 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
-                    <CheckCircle2 size={20} className="text-gold" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-gray-700 text-lg text-center leading-relaxed group-hover:text-charcoal transition-colors duration-300">
-                      {benefit}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                aria-label={`Go to section ${index + 1}`}
+              />
             ))}
           </div>
 
-          {/* Warranty Badge */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-xl mx-auto"
-          >
-            <div className="relative bg-gradient-to-r from-gold to-yellow-600 px-6 py-4 rounded-xl shadow-lg overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12"></div>
-              <div className="relative z-10 flex items-center justify-center gap-3">
-                <Shield size={24} className="text-white" />
-                <p className="text-white font-semibold text-base md:text-lg">
-                  Backed by a 10-year material warranty
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          {/* Rotating Content */}
+          <div className="relative min-h-[380px]">
+            <AnimatePresence mode="wait">
+              {/* Section 1: Benefits */}
+              {currentSection === 0 && (
+                <motion.div
+                  key="benefits"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {VINYL_WRAP_BENEFITS.map((benefit, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{
+                          delay: index * 0.08,
+                          duration: 0.6,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        className={`group relative bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 ${
+                          index === VINYL_WRAP_BENEFITS.length - 1 ? 'lg:col-start-2' : ''
+                        }`}
+                      >
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-yellow-600 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
+                            <BenefitIcon iconName={benefit.icon} size={20} className="text-gold" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-gray-700 text-lg text-center leading-relaxed group-hover:text-charcoal transition-colors duration-300">
+                              {benefit.text}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Section 2: Applications */}
+              {currentSection === 1 && (
+                <motion.div
+                  key="applications"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {VINYL_WRAP_APPLICATIONS.map((app, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        transition={{
+                          delay: index * 0.08,
+                          duration: 0.6,
+                          ease: [0.25, 0.46, 0.45, 0.94]
+                        }}
+                        whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                        className="group relative bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-yellow-600 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                        <div className="flex items-start gap-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
+                            <BenefitIcon iconName={app.icon} size={20} className="text-gold" />
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-gray-700 text-lg text-center leading-relaxed group-hover:text-charcoal transition-colors duration-300">
+                              {app.text}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Section 3: Surfaces */}
+              {currentSection === 2 && (
+                <motion.div
+                  key="surfaces"
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0"
+                >
+                  <div className="max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+                      {VINYL_WRAP_SURFACES.map((surface, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{
+                            delay: index * 0.08,
+                            duration: 0.6,
+                            ease: [0.25, 0.46, 0.45, 0.94]
+                          }}
+                          whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                          className={`group relative bg-gradient-to-br from-white to-gray-50 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 ${
+                            index === VINYL_WRAP_SURFACES.length - 1 ? 'lg:col-start-2' : ''
+                          }`}
+                        >
+                          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gold to-yellow-600 rounded-t-2xl transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                          <div className="flex items-start gap-3">
+                            <div className="flex-shrink-0 w-10 h-10 bg-gold/10 rounded-xl flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300">
+                              <BenefitIcon iconName={surface.icon} size={20} className="text-gold" />
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-gray-700 text-lg text-center leading-relaxed group-hover:text-charcoal transition-colors duration-300">
+                                {surface.text}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.6 }}
+                      className="max-w-3xl mx-auto"
+                    >
+                      <p className="text-sm text-gray-600 italic bg-gold/5 p-5 rounded-lg border-l-4 border-gold text-center">
+                        <strong>Note:</strong> Proper surface preparation is essential — sanding and priming may be required for best adhesion.
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
@@ -321,8 +376,8 @@ const VinylWrap: React.FC = () => {
 
       {/* Gallery Section */}
       <ProductGallery
-        title="Inspirational Design Gallery"
-        subtitle="Explore our gallery of inspiring interior transformations"
+        title="Explore Our Gallery"
+        subtitle="Browse our collection of photos, videos, and catalogues showcasing inspiring interior transformations"
         filters={['All', 'Basic', 'Wood', 'Natural', 'Marble', 'Before/After']}
         images={galleryImages}
         basePath={getAssetPath('/assets/Bodaq-Vinyl-Wap')}

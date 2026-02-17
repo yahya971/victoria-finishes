@@ -11,6 +11,7 @@ interface ProductGalleryProps {
   filters: string[];
   images: { filename: string; category: string }[];
   basePath: string;
+  preserveAspectRatio?: boolean;
 }
 
 const ProductGallery: React.FC<ProductGalleryProps> = ({
@@ -18,7 +19,8 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   subtitle,
   filters,
   images,
-  basePath
+  basePath,
+  preserveAspectRatio = false
 }) => {
   const [filter, setFilter] = useState('All');
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
@@ -142,7 +144,9 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  className={`w-full h-full transition-transform duration-700 group-hover:scale-110 ${
+                    preserveAspectRatio ? 'object-contain' : 'object-cover'
+                  }`}
                 />
 
                 {/* Hover Overlay with Glass Effect */}

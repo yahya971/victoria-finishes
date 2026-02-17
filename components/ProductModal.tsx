@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Product } from '../types';
+import BenefitIcon from './BenefitIcon';
 
 interface ProductModalProps {
   product: Product | null;
@@ -15,9 +16,25 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
 
   if (!product) return null;
 
+  // Map product IDs to their routes
+  const productRoutes: Record<string, string> = {
+    'p1': '/products/italian-decorative-paint',
+    'p2': '/products/vinyl-wrap',
+    'p3': '#', // Italian Wallpaper - not implemented yet
+    'p4': '/products/modern-wall-panel',
+    'p5': '/products/waterproof-panel',
+    'p6': '/products/soundproof-panel',
+    'p7': '/products/composite-decking',
+    'p8': '/products/composite-siding'
+  };
+
+  const hasProductPage = productRoutes[product.id] && productRoutes[product.id] !== '#';
+
   const handleSeeMoreDetails = () => {
-    onClose();
-    navigate('/products/italian-decorative-paint');
+    if (hasProductPage) {
+      onClose();
+      navigate(productRoutes[product.id]);
+    }
   };
 
   const handleBookConsultation = () => {
@@ -103,7 +120,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {product.features.map((feature, index) => (
                     <li key={index} className="flex items-center gap-3 text-sm text-gray-700">
-                      <CheckCircle2 size={16} className="text-gold" />
+                      {product.technicalIcons && product.technicalIcons[index] ? (
+                        <BenefitIcon iconName={product.technicalIcons[index]} size={16} className="text-gold flex-shrink-0" />
+                      ) : (
+                        <BenefitIcon iconName="CheckCircle2" size={16} className="text-gold flex-shrink-0" />
+                      )}
                       {feature}
                     </li>
                   ))}
@@ -115,9 +136,9 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
               <button
                 onClick={handleSeeMoreDetails}
-                disabled={product.id !== 'p1'}
+                disabled={!hasProductPage}
                 className={`flex-1 text-center py-4 font-semibold uppercase tracking-wider text-sm transition-colors rounded-lg shadow-md ${
-                  product.id === 'p1'
+                  hasProductPage
                     ? 'bg-gold text-white hover:bg-gold/90 cursor-pointer'
                     : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                 }`}

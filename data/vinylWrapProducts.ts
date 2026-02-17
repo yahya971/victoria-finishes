@@ -29,7 +29,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
       'Painted wood - Natural warmth with clean finish',
       'Textured finishes - Subtle depth and tactile interest'
     ],
-    externalLink: 'https://bodaq.com/bodaq-catalog/',
+    externalLink: '',
     folderName: 'basic'
   },
   {
@@ -51,7 +51,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
       'Premium wood - Richer tones and refined detailing',
       'Standard wood - Classic, practical aesthetic'
     ],
-    externalLink: 'https://bodaq.com/bodaq-catalog/',
+    externalLink: '',
     folderName: 'wood'
   },
   {
@@ -73,7 +73,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
       'Real fabric - Pronounced textile appearance',
       'Embossed & gold - Dimensional elegance'
     ],
-    externalLink: 'https://bodaq.com/bodaq-catalog/',
+    externalLink: '',
     folderName: 'natural'
   },
   {
@@ -93,36 +93,41 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
       'Luxurious appearance - High-end aesthetic',
       'Versatile application - Modern to classic interiors'
     ],
-    externalLink: 'https://bodaq.com/bodaq-catalog/',
+    externalLink: '',
     folderName: 'marble'
   }
 ];
 
-export const VINYL_WRAP_BENEFITS = [
-  'Air-channel self-adhesive for bubble-free application',
-  'High durability — lasts 10+ years',
-  'Sustainable, eco-friendly materials',
-  'Fire retardant properties (Class A rated)',
-  'Easy cleaning & maintenance',
-  'Resistance to moisture, bacteria, and mold',
-  'Huge variety of textures, colors, and finishes'
+export interface Benefit {
+  text: string;
+  icon: string;
+}
+
+export const VINYL_WRAP_BENEFITS: Benefit[] = [
+  { text: 'Air-channel self-adhesive for bubble-free application', icon: 'Wind' },
+  { text: 'High durability — lasts 10+ years', icon: 'Clock' },
+  { text: 'Sustainable, eco-friendly materials', icon: 'Leaf' },
+  { text: 'Fire retardant properties (Class A rated)', icon: 'Flame' },
+  { text: 'Easy cleaning & maintenance', icon: 'Sparkles' },
+  { text: 'Resistance to moisture, bacteria, and mold', icon: 'ShieldCheck' },
+  { text: 'Huge variety of textures, colors, and finishes', icon: 'Palette' }
 ];
 
-export const VINYL_WRAP_APPLICATIONS = [
-  'Kitchen cabinets and countertops',
-  'Feature walls and ceiling panels',
-  'Doors, windows, and fireplace surrounds',
-  'Office furniture and front desks',
-  'Shower stalls (outside surface)',
-  'Retail fixtures, hotel interiors, and more'
+export const VINYL_WRAP_APPLICATIONS: Benefit[] = [
+  { text: 'Kitchen cabinets and countertops', icon: 'ChefHat' },
+  { text: 'Feature walls and ceiling panels', icon: 'LayoutGrid' },
+  { text: 'Doors, windows, and fireplace surrounds', icon: 'DoorOpen' },
+  { text: 'Office furniture and front desks', icon: 'Briefcase' },
+  { text: 'Shower stalls (outside surface)', icon: 'Bath' },
+  { text: 'Retail fixtures, hotel interiors, and more', icon: 'Store' }
 ];
 
-export const VINYL_WRAP_SURFACES = [
-  'Wood and MDF',
-  'Painted drywall',
-  'Metal',
-  'Glass',
-  'Laminate',
-  'Plastic',
-  'Existing films'
+export const VINYL_WRAP_SURFACES: Benefit[] = [
+  { text: 'Wood and MDF', icon: 'TreeDeciduous' },
+  { text: 'Painted drywall', icon: 'PaintBucket' },
+  { text: 'Metal', icon: 'Box' },
+  { text: 'Glass', icon: 'GlassWater' },
+  { text: 'Laminate', icon: 'Layers' },
+  { text: 'Plastic', icon: 'Package' },
+  { text: 'Existing films', icon: 'Film' }
 ];
