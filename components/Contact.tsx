@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
 
         {/* Copyright and Canadian Badge */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-300 font-medium tracking-wide">&copy; 2025 Victoria Finishes. All rights reserved.</p>
+          <p className="text-sm text-gray-300 font-medium tracking-wide">&copy; 2026 Victoria Finishes. All rights reserved.</p>
           <div className="flex items-center gap-3">
             <span className="text-sm text-gray-300 font-medium tracking-wide">
               100% Canadian Owned and Operated
