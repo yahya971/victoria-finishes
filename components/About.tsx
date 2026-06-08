@@ -5,9 +5,9 @@ import { getAssetPath } from '../utils/paths';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="pt-32 md:pt-40 pb-20 md:pb-32 bg-white">
+    <section id="about" className="pt-24 md:pt-32 pb-16 md:pb-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
           {/* Text Content */}
           <motion.div
@@ -17,35 +17,25 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2"
           >
-            <h4 className="text-gold text-sm font-bold tracking-[0.25em] uppercase mb-5">
-              About Us
-            </h4>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-charcoal mb-10 leading-tight">
-              Premium Material & <br /> Professional Installation
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gold mb-4 leading-tight">
+              Why Victoria Finishes
             </h2>
+            <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-10">
+              Premium materials. Refined craftsmanship. <br /> Precision in every detail.
+            </p>
 
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">Why Us</h3>
-                <p className="text-gray-600 text-base leading-relaxed">
-                  At <span className="font-semibold text-charcoal">Victoria Finishes</span>, we combine premium materials with qualified craftsmanship.
-                  Every project is handled with precision, care, and respect for your space — clean work, lasting results.
+                <h3 className="text-2xl md:text-3xl font-semibold text-charcoal mb-3">Our Mission</h3>
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  To elevate interiors with sophisticated, lasting surface transformations.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">Our Mission</h3>
-                <p className="text-gray-600 text-base leading-relaxed">
-                  To enhance homes and commercial spaces across Victoria with creative surface solutions.
-                  We bring quality, durability, and design together to refresh your environment with confidence.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-semibold text-charcoal mb-3">Our Approach</h3>
-                <p className="text-gray-600 text-base leading-relaxed">
-                  We start by understanding your needs and your vision. Then we apply the right materials, methods,
-                  and details to deliver a smooth, professional finish every time.
+                <h3 className="text-2xl md:text-3xl font-semibold text-charcoal mb-3">Our Approach</h3>
+                <p className="text-gray-600 text-lg md:text-xl leading-relaxed">
+                  Your vision, executed with expertise and uncompromising quality.
                 </p>
               </div>
             </div>
@@ -63,7 +53,7 @@ const About: React.FC = () => {
               <img
                 src={getAssetPath('/assets/about-001.jpg')}
                 alt="Craftsman working"
-                className="w-full h-[500px] lg:h-[550px] object-cover object-center"
+                className="w-full h-[400px] lg:h-[420px] object-cover object-center"
               />
 
               {/* Floating Badge with Glass Effect */}

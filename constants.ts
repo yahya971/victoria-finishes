@@ -98,7 +98,7 @@ export const PRODUCTS: Product[] = [
     title: 'Composite Decking',
     subtitle: 'Exterior Decking Solutions',
     description: 'Durable WPC composite decking combining natural wood appearance with weather resistance and low maintenance for outdoor living.',
-    image: getAssetPath('/assets/Composite-Decking/Composite-Decking-15.jpg'),
+    image: getAssetPath('/assets/Composite-Decking/Composite-Decking-1.jpg'),
     features: ['Natural Wood Look', 'Weather Resistant', 'Slip-Resistant', 'Low Maintenance'],
     technicalIcons: ['TreeDeciduous', 'CloudRain', 'ShieldCheck', 'Wrench']
   },
@@ -107,7 +107,7 @@ export const PRODUCTS: Product[] = [
     title: 'Composite Siding',
     subtitle: 'Long Lasting Protection with Modern Design',
     description: 'Durable WPC composite siding for outdoor façades. Natural wood look with weather resistance and low maintenance.',
-    image: getAssetPath('/assets/Composite-Siding/Composite-Siding-6.jpg'),
+    image: getAssetPath('/assets/Composite-Siding/Composite-Siding-1.png'),
     features: ['Weather Resistant', 'Low Maintenance', 'Thermal Insulation', 'Eco-Friendly'],
     technicalIcons: ['CloudRain', 'Wrench', 'Waves', 'Leaf']
   }

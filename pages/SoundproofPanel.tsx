@@ -160,6 +160,7 @@ const SoundproofPanel: React.FC = () => {
         filters={['All']}
         images={galleryImages}
         basePath={getAssetPath('/assets/Soundproof-Wall-Panel')}
+        videoUrl="https://www.youtube.com/watch?v=O0rsu4hu6Ks"
       />
 
       {/* CTA Section */}

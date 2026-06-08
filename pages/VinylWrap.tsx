@@ -381,6 +381,7 @@ const VinylWrap: React.FC = () => {
         filters={['All', 'Basic', 'Wood', 'Natural', 'Marble', 'Before/After']}
         images={galleryImages}
         basePath={getAssetPath('/assets/Bodaq-Vinyl-Wap')}
+        videoUrl="https://www.youtube.com/watch?v=DG9CNEQDnyM"
       />
 
       {/* Sub-Product Modal */}

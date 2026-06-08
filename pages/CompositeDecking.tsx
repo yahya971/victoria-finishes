@@ -171,6 +171,7 @@ const CompositeDecking: React.FC = () => {
         filters={['All']}
         images={galleryImages}
         basePath={getAssetPath('/assets/Composite-Decking')}
+        videoUrl="https://www.youtube.com/watch?v=upvzDIpMcxI"
       />
 
       {/* CTA Section */}

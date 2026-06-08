@@ -67,20 +67,9 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <img src={getAssetPath('/assets/logo.png')} alt="Victoria Finishes Logo" className="h-12 w-auto" />
-          <div className="flex flex-col">
-            <Link
-              to="/"
-              className={`font-serif text-2xl tracking-widest font-bold ${scrolled || !isHomePage ? 'text-charcoal' : 'text-charcoal lg:text-white'}`}
-            >
-              VICTORIA FINISHES
-            </Link>
-            <span className={`text-[10px] uppercase tracking-[0.2em] font-bold ${scrolled ? 'text-gold' : 'text-gold'}`}>
-              Wall Covering & More
-            </span>
-          </div>
-        </div>
+        <Link to="/" className="flex items-center">
+          <img src={getAssetPath('/assets/logo3.png')} alt="Victoria Finishes Logo" className="h-14 w-auto" />
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-8">

@@ -66,7 +66,7 @@ const ItalianDecorativePaint: React.FC = () => {
       </section>
 
       {/* Gallery Section */}
-      <ItalianPaintGallery />
+      <ItalianPaintGallery videoUrl="https://www.youtube.com/watch?v=vqXflUrXYQQ" />
 
       {/* Sub-Product Modal */}
       <SubProductModal

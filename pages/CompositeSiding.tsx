@@ -162,6 +162,7 @@ const CompositeSiding: React.FC = () => {
         filters={['All']}
         images={galleryImages}
         basePath={getAssetPath('/assets/Composite-Siding')}
+        videoUrl="https://www.youtube.com/watch?v=JGYSH2yuLg0"
       />
 
       {/* CTA Section */}

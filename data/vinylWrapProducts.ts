@@ -13,7 +13,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
   {
     id: 'basic',
     name: 'BASIC',
-    tagline: 'Surface Finishes',
+    tagline: 'Painted Concrete & Wood, Solid & Texture',
     subtitle: 'Clean, Modern, and Versatile Foundation',
     description: [
       'When it comes to refreshing interior surfaces, Basic finishes offer a clean, modern, and versatile foundation for a wide range of spaces.',
@@ -35,7 +35,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
   {
     id: 'wood',
     name: 'WOOD',
-    tagline: 'Surface Finishes',
+    tagline: 'Long, Origin, Standard, Premium',
     subtitle: 'Natural Character with Modern Durability',
     description: [
       'When it comes to creating warm, inviting interiors, wood finishes remain one of the most timeless and versatile choices. Our WOOD collection delivers the natural character of timber while offering a clean, durable, and consistent surface upgrade for modern spaces.',
@@ -57,7 +57,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
   {
     id: 'natural',
     name: 'NATURAL',
-    tagline: 'Surface Finishes',
+    tagline: 'Metal, Emboss & Gold, Natural & Real Fabric',
     subtitle: 'Texture, Depth, and Character',
     description: [
       'When it comes to adding texture, depth, and character to interior spaces, Natural finishes bring a refined balance between authenticity and design.',
@@ -79,7 +79,7 @@ export const VINYL_WRAP_SUBPRODUCTS: VinylWrapSubProduct[] = [
   {
     id: 'marble',
     name: 'STONE & MARBLE',
-    tagline: 'Surface Finishes',
+    tagline: 'Premium & Stone Marble',
     subtitle: 'Timeless Elegance and Natural Beauty',
     description: [
       'When it comes to creating timeless and sophisticated interiors, stone and marble finishes bring a sense of elegance, depth, and natural beauty to any space.',

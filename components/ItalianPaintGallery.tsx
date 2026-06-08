@@ -94,7 +94,11 @@ const FILTERS = [
   'Meteore 10 Marmorizzato'
 ];
 
-const ItalianPaintGallery: React.FC = () => {
+interface ItalianPaintGalleryProps {
+  videoUrl?: string;
+}
+
+const ItalianPaintGallery: React.FC<ItalianPaintGalleryProps> = ({ videoUrl }) => {
   const [filter, setFilter] = useState('All');
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
@@ -161,6 +165,7 @@ const ItalianPaintGallery: React.FC = () => {
   };
 
   return (
+    <>
     <section className="pt-20 pb-32 bg-off-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
@@ -247,6 +252,7 @@ const ItalianPaintGallery: React.FC = () => {
             <p className="text-gray-400 text-lg">No images found for this filter.</p>
           </div>
         )}
+
       </div>
 
       {/* Gallery Modal */}
@@ -257,6 +263,42 @@ const ItalianPaintGallery: React.FC = () => {
         />
       )}
     </section>
+
+    {videoUrl && (
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-medium text-gold leading-tight">
+              Product Demo
+            </h2>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="relative w-full rounded-xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                src={videoUrl.replace('watch?v=', 'embed/')}
+                title="Product Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    )}
+    </>
   );
 };
 
