@@ -1,7 +1,6 @@
 import { getAssetPath } from './paths';
 
 export const WATERPROOF_PANEL_GALLERY_IMAGES = [
-  'Waterproof-Wall-Panel-1.png',
   'Waterproof-Wall-Panel-2.png',
   'Waterproof-Wall-Panel-3.png',
   'Waterproof-Wall-Panel-4.png',

@@ -67,7 +67,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative bg-white w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col md:flex-row z-[10000] rounded-2xl"
+          className="relative bg-white w-full max-w-5xl max-h-[90vh] md:h-[60vh] overflow-y-auto md:overflow-hidden scrollbar-hidden shadow-2xl flex flex-col md:flex-row z-[10000] rounded-2xl"
         >
           <button
             onClick={onClose}
@@ -77,7 +77,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           </button>
 
           {/* Image Side */}
-          <div className="w-full md:w-1/2 h-64 md:h-auto rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden">
+          <div className="w-full md:w-1/2 h-52 md:h-full rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden flex-shrink-0">
             <img
               src={product.image}
               alt={product.title}
@@ -86,28 +86,28 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           </div>
 
           {/* Content Side */}
-          <div className="w-full md:w-1/2 p-8 md:p-12 bg-white rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex flex-col justify-center">
-            <h4 className="text-gold text-sm font-bold uppercase tracking-widest mb-3">
+          <div className="w-full md:w-1/2 p-6 md:p-8 bg-white rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex flex-col justify-center">
+            <h4 className="text-gold text-xs font-bold uppercase tracking-widest mb-2">
               Product Details
             </h4>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-charcoal mb-2">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-charcoal mb-1">
               {product.title}
             </h2>
-            <h3 className="text-lg text-gray-500 mb-6">
+            <h3 className="text-sm text-gray-500 mb-4">
               {product.subtitle}
             </h3>
 
-            <p className="text-gray-600 text-base mb-8 leading-relaxed">
+            <p className="text-gray-600 text-sm mb-5 leading-relaxed">
               {product.description}
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {product.subProducts && (
                 <div>
-                  <h5 className="font-serif font-bold text-charcoal mb-3 text-sm uppercase">Available Collections</h5>
-                  <div className="flex flex-wrap gap-2">
+                  <h5 className="font-serif font-bold text-charcoal mb-2 text-xs uppercase">Available Collections</h5>
+                  <div className="flex flex-wrap gap-1.5">
                     {product.subProducts.map((sub, index) => (
-                      <span key={index} className="px-3 py-1 bg-off-white text-gray-600 text-xs uppercase tracking-wide border border-gray-100">
+                      <span key={index} className="px-2 py-0.5 bg-off-white text-gray-600 text-xs uppercase tracking-wide border border-gray-100">
                         {sub}
                       </span>
                     ))}
@@ -116,14 +116,14 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
               )}
 
               <div>
-                <h5 className="font-serif font-bold text-charcoal mb-3 text-sm uppercase">Key Advantages</h5>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <h5 className="font-serif font-bold text-charcoal mb-2 text-xs uppercase">Key Advantages</h5>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {product.features.map((feature, index) => (
-                    <li key={index} className="flex items-center gap-3 text-sm text-gray-700">
+                    <li key={index} className="flex items-center gap-2 text-xs text-gray-700">
                       {product.technicalIcons && product.technicalIcons[index] ? (
-                        <BenefitIcon iconName={product.technicalIcons[index]} size={16} className="text-gold flex-shrink-0" />
+                        <BenefitIcon iconName={product.technicalIcons[index]} size={14} className="text-gold flex-shrink-0" />
                       ) : (
-                        <BenefitIcon iconName="CheckCircle2" size={16} className="text-gold flex-shrink-0" />
+                        <BenefitIcon iconName="CheckCircle2" size={14} className="text-gold flex-shrink-0" />
                       )}
                       {feature}
                     </li>
@@ -133,7 +133,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             </div>
 
             {/* Two Buttons Side-by-Side */}
-            <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-4">
+            <div className="mt-6 pt-4 border-t border-gray-100 flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleSeeMoreDetails}
                 disabled={!hasProductPage}

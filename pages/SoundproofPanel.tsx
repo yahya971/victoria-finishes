@@ -157,7 +157,7 @@ const SoundproofPanel: React.FC = () => {
       <ProductGallery
         title="Explore Our Gallery"
         subtitle="Browse our collection of soundproof panel installations showcasing acoustic solutions and design possibilities"
-        filters={['All']}
+        filters={[]}
         images={galleryImages}
         basePath={getAssetPath('/assets/Soundproof-Wall-Panel')}
         videoUrl="https://www.youtube.com/watch?v=O0rsu4hu6Ks"

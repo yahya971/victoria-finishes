@@ -89,7 +89,7 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative bg-white w-full max-w-7xl max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col lg:flex-row z-[10000] rounded-2xl"
+          className="relative bg-white w-full max-w-5xl max-h-[90vh] md:h-[60vh] overflow-y-auto md:overflow-hidden scrollbar-hidden shadow-2xl flex flex-col md:flex-row z-[10000] rounded-2xl"
         >
           <button
             onClick={onClose}
@@ -99,7 +99,7 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
           </button>
 
           {/* Image Carousel Section */}
-          <div className="w-full lg:w-2/5 h-64 lg:h-auto relative rounded-t-2xl lg:rounded-l-2xl lg:rounded-tr-none overflow-hidden bg-gray-100">
+          <div className="w-full md:w-1/2 h-52 md:h-full relative rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden bg-gray-100 flex-shrink-0">
             {images.length > 0 ? (
               <>
                 <AnimatePresence initial={false} custom={direction}>
@@ -151,32 +151,32 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
           </div>
 
           {/* Content Section */}
-          <div className="w-full lg:w-3/5 p-8 md:p-12 bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none flex flex-col">
-            <h4 className="text-gold text-sm font-bold uppercase tracking-widest mb-3">
+          <div className="w-full md:w-1/2 p-6 md:p-8 bg-white rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex flex-col overflow-y-auto scrollbar-hidden">
+            <h4 className="text-gold text-xs font-bold uppercase tracking-widest mb-2">
               {productCategoryName}
             </h4>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-charcoal mb-3">
+            <h2 className="text-2xl md:text-3xl font-serif font-bold text-charcoal mb-1">
               {subProduct.name}
             </h2>
-            <h3 className="text-lg text-gray-500 mb-5">
+            <h3 className="text-sm text-gray-500 mb-3">
               {subProduct.tagline}
             </h3>
 
-            <div className="space-y-3 mb-6 overflow-y-auto flex-1">
+            <div className="space-y-2 mb-4 flex-1">
               {subProduct.description.map((paragraph, index) => (
-                <p key={index} className="text-gray-600 text-base leading-relaxed">
+                <p key={index} className="text-gray-600 text-xs leading-relaxed">
                   {paragraph}
                 </p>
               ))}
             </div>
 
-            <div className="space-y-5 mb-6">
+            <div className="space-y-3 mb-4">
               <div>
-                <h5 className="font-serif font-bold text-charcoal mb-3 text-sm uppercase">Key Features</h5>
-                <ul className="grid grid-cols-1 gap-2.5">
+                <h5 className="font-serif font-bold text-charcoal mb-2 text-xs uppercase">Key Features</h5>
+                <ul className="grid grid-cols-1 gap-1.5">
                   {subProduct.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-sm text-gray-700">
-                      <CheckCircle2 size={16} className="text-gold flex-shrink-0 mt-0.5" />
+                    <li key={index} className="flex items-start gap-2 text-xs text-gray-700">
+                      <CheckCircle2 size={14} className="text-gold flex-shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
                   ))}
@@ -190,18 +190,18 @@ const SubProductModal: React.FC<SubProductModalProps> = ({ subProduct, images, o
                 href={subProduct.externalLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gold hover:text-charcoal transition-colors text-sm mb-6"
+                className="flex items-center gap-2 text-gold hover:text-charcoal transition-colors text-xs mb-4"
               >
-                <ExternalLink size={16} />
+                <ExternalLink size={14} />
                 <span>View manufacturer's details & catalogue</span>
               </a>
             )}
 
             {/* Action Button */}
-            <div className="pt-6 border-t border-gray-100">
+            <div className="pt-4 border-t border-gray-100">
               <button
                 onClick={handleBookConsultation}
-                className="w-full text-center bg-charcoal text-white py-4 font-semibold uppercase tracking-wider text-sm hover:bg-gold transition-colors rounded-lg shadow-md"
+                className="w-full text-center bg-charcoal text-white py-3 font-semibold uppercase tracking-wider text-xs hover:bg-gold transition-colors rounded-lg shadow-md"
               >
                 Book Consultation
               </button>
