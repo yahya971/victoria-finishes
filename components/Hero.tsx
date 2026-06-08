@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { getAssetPath } from '../utils/paths';
+import { scrollToSection } from '../utils/scrollToSection';
 
 const Hero: React.FC = () => {
   return (
@@ -42,12 +43,12 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-5 justify-center"
         >
-          <a href="#products" className="px-10 py-4 bg-transparent border-2 border-white text-white uppercase tracking-wider text-sm font-semibold hover:bg-white hover:text-charcoal transition-all duration-300 rounded-lg">
+          <button onClick={() => scrollToSection('#products')} className="px-10 py-4 bg-transparent border-2 border-white text-white uppercase tracking-wider text-sm font-semibold hover:bg-white hover:text-charcoal transition-all duration-300 rounded-lg">
             Explore More
-          </a>
-          <a href="#about" className="px-10 py-4 bg-gold text-white border-2 border-gold uppercase tracking-wider text-sm font-semibold hover:bg-transparent hover:text-white transition-all duration-300 rounded-lg">
+          </button>
+          <button onClick={() => scrollToSection('#about')} className="px-10 py-4 bg-gold text-white border-2 border-gold uppercase tracking-wider text-sm font-semibold hover:bg-transparent hover:text-white transition-all duration-300 rounded-lg">
             Learn More
-          </a>
+          </button>
         </motion.div>
       </div>
 
